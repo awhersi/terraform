@@ -9,7 +9,7 @@ resource "aws_instance" "app_server" {
   user_data = var.ec2_user_data
 }
 
-output "EC2" {
-  value = lookup(aws_instance.app_server.tags, "Name")
+output "EC2_URL" {
+  value = "http://${aws_instance.app_server.public_ip}:8080"
 }
 
