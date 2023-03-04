@@ -1,4 +1,4 @@
-# Terraform project
+# Terraform project 1
 1. Deploy 1 EC2 Instances in your Default VPC.
 
 2. Bootstrap the EC2 instance with a script that will install and start Jenkins. 
