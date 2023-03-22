@@ -1,7 +1,24 @@
-variable "ami_id" {
-  description = "AMI ID"
+variable "region" {
+  description = "Region"
   type        = string
-  default     = "ami-0dfcb1ef8550277af"
+  default     = "us-east-1"
+}
+
+data "aws_ami" "ami_id" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["amazon"]
+  # region = var.region
 }
 
 variable "instance_type" {
@@ -10,10 +27,16 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "region" {
-  description = "Region"
+variable "instance_name" {
+  description = "Instance Name"
   type        = string
-  default     = "us-east-1"
+  default     = "Jenkins Instance"
+}
+
+variable "key_pair" {
+  description = "Key Pair"
+  type        = string
+  default     = "keypair"
 }
 
 variable "ec2_user_data" {
